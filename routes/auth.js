@@ -15,7 +15,7 @@ var middleware=require("../middleware")
  });
 
  var ipdata;
- var IP="http://api.ipstack.com/"+ip.address()+"?access_key=690d1c17324fe9d9c9b27c144913bb67&format=1";
+ var IP="http://api.ipstack.com/"+"14.139.240.247"+"?access_key=690d1c17324fe9d9c9b27c144913bb67&format=1";
   request(IP, function(err,res,body){
   ipdata=JSON.parse(body);
   // console.log(JSON.parse(body));
