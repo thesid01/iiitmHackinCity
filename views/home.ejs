@@ -1,0 +1,269 @@
+<%- include partials/header.ejs %>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#myModal').show();
+		$('#close').on('click',function(){
+			$('#myModal').hide();
+			$('#main').show();
+		});
+	});
+</script>
+
+<style>
+	#myModal{
+		background:rgba(0,0,0,0.7);
+	}
+</style>
+
+<link rel="stylesheet" href="./style/feed.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
+<div class="container-fluid ">
+<%if(currentuser.rated==0){%>
+	<div id="myModal" class="modal" style="background :rgba(0,0,0,0.5)" role="dialog">
+	  <div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <div class="h5">Do You want to Rate you location?</div>
+	      </div>
+				<form action = "/rating" method = "POST">
+	      <div class="modal-body">
+					<label for="customRange2">Vector Control</label>
+					<input type="range" name="personalhygeine" class="custom-range" min="0" max="5" id="customRange2">
+	      </div>
+				<div class="modal-body">
+					<label for="customRange2">Water Supply</label>
+					<input type="range" name="drinkingwater" class="custom-range" min="0" max="5" id="customRange2">
+	      </div>
+				<div class="modal-body">
+				 <label for="customRange2">Solid Waste Management</label>
+				 <input type="range" name="garbagecontrol" class="custom-range" min="0" max="5" id="customRange2">
+			 </div>
+			 <div class="modal-body">
+					<label for="customRange2">Human Waste Disposal</label>
+					<input type="range" name="healthfacility" class="custom-range" min="0" max="5" id="customRange2">
+	      </div>
+				<div class="modal-body">
+ 					<label for="customRange2">Institutional Hygeine</label>
+ 					<input type="range" name="publicinfrastructure" class="custom-range" min="0" max="5" id="customRange2">
+ 	      </div>
+				<button id="close" type="button" class="btn btn-warning" data-dismiss="modal">Skip</button>
+				<div class="float-right"><button type="submit" name="button" class="btn btn-success">Submit</button></div>
+				</form>
+	    </div>
+	  </div>
+	</div>
+	<%}%>
+<br>
+
+
+
+
+
+<div id="main">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 p-5">
+				<div class="row">
+					<div class="col">
+						<!-- Card -->
+					<% for(var i=0;i<posts.length;i++){ %>
+					<div class="card mb-3 border <% if(posts[i].author.username!="admin"){%>z-depth-0<%}%>">
+
+					  <div class="view overlay <% if(posts[i].author.username=="admin"){%>elegant-color white-text<%}%>">
+					    <img style='padding:2rem;height: 100%; width: 100%; object-fit: contain' class="<% if(posts[i].author.username!="admin"){%>card-img-top<%}%>" src="<%=posts[i].img%>" alt="Card image cap">
+					    <a href="#!">
+					      <div class="mask rgba-white-slight"></div>
+					    </a>
+					  </div>
+
+					  <!-- Card content -->
+					  <div class="card-body <% if(posts[i].author.username=="admin"){%>elegant-color white-text<%}%>">
+
+					    <!-- Title -->
+							<% if(posts[i].author.username=="admin"){%><h4>Posted By Admin</h4><%}%>
+					    <h3 <% if(posts[i].author.username=="admin"){%>class="card-title"<%}%>><%= posts[i].caption %></h3>
+					    <!-- Text -->
+					    <p class="card-text"><%= posts[i].description %></p>
+
+							<% if(posts[i].author.username=="admin"){%>
+
+								<form action="/rate" method="POST">
+								<input type="text" name="idd" value="<%=posts[i]._id %>" hidden>
+								<input type="range" name="rating" class="custom-range" min="0" max="5" id="customRange2">
+								<button type="submit" class="btn btn-primary">
+									rate
+								</button>
+								</form>
+
+							<%}%>
+
+							<% if(posts[i].author.username!="admin"){%>
+
+							<form action="/rate" method="POST">
+							<input type="text" name="idd" value="<%=posts[i]._id %>" hidden>
+								<div class="row">
+								<div class="col-2">
+									<button type="submit" class="btn btn-success"><i class="fas fa-thumbs-up"></i></button>
+								</div>
+								<div class="col-2">
+									<button type="submit" class="btn btn-success"><i class="fas fa-thumbs-down"></i></button>
+								</div>
+								</div>
+							</form>
+							<%}%>
+					  </div>
+
+					  <div class="card-footer <% if(posts[i].author.username=="admin"){%>elegant-color white-text<%}%>">
+
+
+							<!-- Full Height Modal Right -->
+							<div class="modal fade right" id="fullHeightModalRight<%=i%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+								aria-hidden="true">
+
+								<!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+								<div class="modal-dialog modal-full-height modal-right " role="document">
+
+
+									<div class="modal-content <% if(posts[i].author.username=="admin"){%>elegant-color white-text<%}%>">
+										<div class="modal-header">
+											<h4 class="modal-title h3 w-100" id="myModalLabel">Comments</h4>
+										</div>
+										<div class="modal-body">
+											<% posts[i].comments.forEach(function(comment){%>
+										<div style="padding: -15px;">
+											<p style="font-size:0.8rem"><%=comment.content%></p>
+											<div class="float-right" style="font-size: .7rem;"><span class="pull-right"> Just Now </span>
+											<strong><%= comment.author.username %></strong></div>
+										</div>
+										<hr>
+										<%})%>
+										</div>
+										<div class="modal-footer justify-content-center">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Full Height Modal Right -->
+
+
+
+					  	<form  action="/post/<%=posts[i]._id%>/comment" method="POST" class="row ">
+					  		<div class="md-form col-6">
+							  <input class="form-control form-control-sm" name="content" type="text" placeholder="Comment" required="">
+							</div>
+			              <div class="col-2">
+			                <button type="submit" class="btn btn-success"><i class="fab fa-telegram-plane"></i></button>
+			              </div>
+			              <div class="col-2">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fullHeightModalRight<%=i%>">
+							  <i class="fas fa-comment-alt"></i>
+							</button>
+						</div>
+						</form>
+					  	<!-- -->
+					  </div>
+
+					</div>
+					<!-- Card -->
+					<%}%>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 p-5 mt-5">
+				<!-- Card Narrower -->
+				<div class="card card-cascade narrower">
+
+				  <!-- Card image -->
+				  <div class="view view-cascade overlay">
+				    <img  class="card-img-top" src="http://nlopez.io/content/images/2015/03/smart-location.jpg" alt="Card image cap">
+				    <a>
+				      <div class="mask rgba-white-slight"></div>
+				    </a>
+				  </div>
+
+				  <!-- Card content -->
+				  <div class="card-body card-body-cascade">
+
+				    <!-- Label -->
+				    <h5 class="pb-2 pt-1">Mr. <%=currentuser.username%><br> Your Location <i class="fas fa-map-marker"></i></h5>
+				    <!-- Title -->
+				    <h4 class="font-weight-bold card-title"><%=currentuser.location_country %></h4>
+				    <!-- Text -->
+				    <p class="card-text"><%=currentuser.location_state %>, <%=currentuser.location_city %>, <%=currentuser.location_zip %></p>
+				    <!-- Button -->
+				    <a class="btn btn-unique" href="/results">Your Areas rating</a>
+
+				  </div>
+
+				</div>
+				<!-- Card Narrower -->
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- <a href="/results">Click to see your area's average rating</a> -->
+<!-- <% for(var i=0;i<posts.length;i++){ %>
+  <div class="row mt-3">
+    <div class="col-sm-12 col-md-8 mx-auto ">
+      <div class="mt-3 card text-center ">
+        <div class="card-header">
+          <span style="float:left;font-size:1.75rem"><%= posts[i].author.username %> | <%= posts[i].caption %></div>
+        </div>
+        <div id="postimg">
+          <img style="width:100%;" src="<%=posts[i].img%>">
+        </div>
+        <div class="card-footer text-muted">
+          <div class="row">
+            <div class="col-sm-6">
+              <button><span class="mr-2 ml-2"><i class="far fa-thumbs-up upvote fa-2x"></i><span class="uppvote"></span></span></button>
+              <button><span><i class="far fa-thumbs-down downvote fa-2x"></i><span class="downnvote"></span></span></button>
+            </div>
+            <div class="col-sm-6">
+              <div class="float-right"><i class="far fa-comment-alt fa-2x"></i></div>
+            </div>
+          </div>
+          <div class="row mt-2" style="position:relative; font-size:1.25rem"><%= posts[i].description %></div>
+          <div>
+            <form  action="/post/<%=posts[i]._id%>/comment" method="POST" class="row">
+              <div class="col-10">
+                <div class="form-group">
+                  <input type="text" name="content" class="form-control" id="comment" aria-describedby="comment" placeholder="Enter Comment">
+                </div>
+              </div>
+              <div class="col-2">
+                <button type="submit" class="btn btn-danger">Submit</button>
+              </div>
+			</form>
+			<% posts[i].comments.forEach(function(comment){%>
+				<div class="row">
+						<div class="col-lg-12 col-md-6">
+							<span class="pull-right"> Just Now </span>
+							<strong><%= comment.author.username %></strong>
+
+							<p style="font-size:1.25rem"><%=comment.content%></p>
+
+						</div>
+					</div>
+					<hr>
+						<%})%>
+
+
+          </div>
+        </div>
+      </div>
+    </div> -->
+<!-- <%}%> -->
+
+<br>
+</br>
+<br>
+<%- include partials/footer.ejs %>
+</div>
+</div>

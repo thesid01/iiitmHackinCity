@@ -1,0 +1,21 @@
+<%- include partials/header.ejs %>
+<div style="width: 30% ; margin:0 auto;">
+	<form action="/girls/<%= id %>/comments" method ="POST">
+		<div class="form-group">
+			<input type="content"  class= "form-control" placeholder="content" autofocus name="comment[content]" >
+		</div>
+		
+		<div>
+			<button  class=" btn btn-lg btn-success btn-block" type="submit">ADD</button>
+		</div>
+	</form>
+</div>
+
+
+
+
+
+
+
+
+<%- include partials/footer.ejs %>

@@ -1,0 +1,19 @@
+<%- include partials/header.ejs %>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+
+
+<div class="container">
+<div style="width: 30% ; margin:0 auto;">
+	<form action="/girls/<%= girl_id %>/comments/<%=editcomment._id%>?_method=PUT" method ="POST">
+		<!-- <form> -->
+			<div class="form-group">
+			<input type="content" value="<%=editcomment.content%>" class= "form-control" placeholder="content" autofocus name="comment[content]" >
+		</div>
+		
+		<div>
+			<button  class=" btn btn-lg btn-success btn-block" type="submit">ADD</button>
+		</div>
+	</form>
+</div>
+</div>
+<%- include partials/footer.ejs %>

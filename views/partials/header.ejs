@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Culture Care</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
+
+
+    <style>
+        .shdw{
+            -webkit-box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75);
+box-shadow: 2px 4px 20px -4px rgba(0,0,0,0.75);
+        }
+    </style>
+  </head>
+  <body>
+
+
+
+    <!--Navbar -->
+  <nav class="mb-1 navbar navbar-expand-lg navbar-dark primary-color fixed-top">
+    <a class="navbar-brand" href="/post" style="font-family: 'Indie Flower', cursive;">
+      <img src="https://github.com/thesid01/heroku-node/blob/master/logo.png?raw=true" height="35" alt="mdb logo">  Hygienic Care
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
+      aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+      <ul class="navbar-nav ml-auto">
+        <% if(!currentuser){ %>
+        <li class="nav-item active">
+          <a class="nav-link" href="/login">
+              Login
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-info"></i> Info </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+              <a class="dropdown-item" href="#">About Us</a>
+              <a class="dropdown-item" href="#">Contact Us</a>
+            </div>
+        </li>
+        <% } else{ %>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">
+              Signed in as <%=currentuser.username%>
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-user"></i> Profile </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+              <a class="dropdown-item" href="#">My account</a>
+              <a class="dropdown-item" href="/logout">Log out</a>
+            </div>
+        </li>
+        <%}%>
+      </ul>
+    </div>
+  </nav>
+  <!--/.Navbar -->
+
+
+   <!--  <nav id="navigation" class="navbar navbar-light bg-light shdw fixed-top" style="background-color:darkturquoise">
+      <a class="navbar-brand" href="#">Logo | CultureCare</a>
+
+      <div class="nav navbar-nav navbar-right">
+        <ul style="display: flex; list-style: none;" class="mr-3">
+          <% if(!currentuser){ %>
+        <li class="mr-2"><a href="/login"><i class="far fa-user fa-2x"></i></a></li>
+          <li><a href="/login">SignIn</a></li>
+          <% } else{ %>
+            <li class="mr-2"><a href="#">Signed in as <%=currentuser.username%></a></li>
+
+					<li><a href="/logout">Logout</a></li></ul>
+          <%}%>
+        </div>
+    </nav>
+ -->

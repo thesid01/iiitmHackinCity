@@ -1,0 +1,39 @@
+<%- include  partials/header.ejs %>
+
+
+<div class="container">
+	<div class="jumbotron"> 
+		<div class="container">
+		<h1 class="pagename"><i class="fas fa-kiss-wink-heart"></i> List of the most beautiful</h1>
+		<p>Trust me</p>
+		<p><a href="/girls/new" class="btn btn-lg btn-primary" >ADD NEW</a>
+		</p>
+		</div>
+	</div>
+
+	<div class="row text-center is-table-row" style="display:flex; flex-wrap:wrap;">
+		
+		<%for(var i=0 ;i<girls.length;i++){%>
+		<div class="col-md-6 col-lg-3 col-xs-12">
+			<div class="thumbnail row-eq-height">
+				<img src="<%=girls[i].img%>">
+				<div class ="caption">
+					<h4><%=girls[i].name%></h4>
+				</div>
+				<a class="btn btn-sm btn-primary" href="/girls/<%= girls[i]._id %>"> INFO </a>
+
+			</div>
+		</div>
+
+		<%}%>
+	</div>
+	
+
+
+</div>
+
+
+
+
+
+<%- include  partials/footer.ejs %>

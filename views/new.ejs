@@ -1,0 +1,23 @@
+<%- include  partials/header.ejs %>
+<h1 style="text-align:center;">
+	add some new !!
+</h1>
+<div style="width: 30% ; margin:0 auto;">
+	<form action="/post" method ="POST">
+		<div class="form-group">
+			<input type="text"  class= "form-control" placeholder="Name" name="newname" >
+		</div>
+		<div class="form-group">
+			<input type="text" placeholder="img url" class=" form-control" name="newimg" >
+		</div>
+		<div class="form-group">
+			<textarea rows="5" cols="33" class= "form-control" placeholder="about" name="newdescription" ></textarea>
+		</div>
+		<div>
+			<button  class=" btn btn-lg btn-success btn-block" type="submit">ADD</button>
+		</div>
+		
+	</form>
+</div>
+
+<%- include  partials/footer.ejs %>

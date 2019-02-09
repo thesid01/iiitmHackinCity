@@ -1,0 +1,31 @@
+<%- include partials/header.ejs %>
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+<div class="container-fluid" style="margin-top:100px;">
+  <div class="row m-5 " style="align-items: left;">
+    <div class="col-sm-12 col-md-6 ml-5 pl-5 float-right" style="margin-right: 0">
+      <!-- Card -->
+      <div class=" col-5 float-right">
+        <div class="card ml-5">
+          <!-- Card image -->
+          <div class="view overlay">
+            <img class="card-img-top" src="https://static.thenounproject.com/png/17241-200.png" alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+        <!-- Card -->
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <div class="col-md-4 mr-5 pr-5" style="font-family: 'Pacifico', cursive;">
+          User Name: <%=currentuser.username%><br>
+          <b>Posts: </b> 0<br>
+          Description<br>
+        </div>
+    </div>
+  </div>
+</div>
+
+<%- include partials/footer.ejs %>
+
