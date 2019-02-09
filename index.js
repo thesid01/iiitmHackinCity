@@ -14,7 +14,7 @@ var ip = require('ip');
 // app.use(methodoverride("_method"));
 app.use(express.static("public"));
 var mongoose=require("mongoose");
-mongoose.connect("mongodb://sid:sid123@ds127825.mlab.com:27825/hack", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/hack", { useNewUrlParser: true });
 mongoose.connection.on('error',function(error){
   console.error("tejendra",error);
 });
@@ -73,9 +73,9 @@ app.use(commentroutes)
 app.use(authroutes)
 
 
-// app.listen(3000,function(){
-//   console.log("On Tez");
-// })
-app.listen(process.env.PORT||5000,function(){
-  console.log("ON BABY!!!!");
-});
+app.listen(3000,function(){
+  console.log("On Tez");
+})
+// app.listen(process.env.PORT||5000,function(){
+//   console.log("ON BABY!!!!");
+// });

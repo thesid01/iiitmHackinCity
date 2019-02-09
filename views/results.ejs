@@ -12,14 +12,16 @@
       <!-- Card -->
       <div class="card mb-4">
         <!--Card content-->
+
         <div class="card-body">
           <!--Title-->
-          <h4 class="card-title">Water Supply</h4>
+          <h4 class="card-title ">Water Supply</h4>
+          <hr>
           <!--Text-->
-          <p class="card-text">How much is the water supplied to your society is safe for drinking, domestic and recreational ?</p>
+          <p class="card-text ">How much is the water supplied to your society is safe for drinking, domestic and recreational ?</p>
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-          <p>Rated By : <%= datas[0].ratedby %></p>
-          <p>Rating: <%= drinkingwater %></p>
+          <div class="p-2"><p><b>Rated By </b>: <%= datas[0].ratedby %></p>
+          <p><b>Rating</b> : <%= drinkingwater %></p></div>
         </div>
       </div>
       <!-- Card -->
@@ -35,12 +37,13 @@
         <div class="card-body">
           <!--Title-->
           <h4 class="card-title">Solid Waste Management</h4>
+          <hr>
           <!--Text-->
           <p class="card-text">How is the storage, collection, disposal and management of solid waste in your society?</p>
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 
-          <p>Rated By : <%=datas[0].ratedby%></p>
-          <p>Rating: <%= garbagecontrol %></p>
+          <p><b>Rated By</b> : <%=datas[0].ratedby%></p>
+          <p><b>Rating</b>: <%= garbagecontrol %></p>
         </div>
       </div>
       <!-- Card -->
@@ -57,11 +60,12 @@
         <div class="card-body">
           <!--Title-->
           <h4 class="card-title">Vector Control</h4>
+          <hr>
           <!--Text-->
           <p class="card-text">How is the control of mammals(rats,etc.) and athropods( insects,etc.) in your soceity? </p>
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-          <p>Rated By : <%=datas[0].ratedby%></p>
-          <p>Rating: <%= personalhygeine %></p>
+          <p><b>Rated By</b> : <%=datas[0].ratedby%></p>
+          <p><b>Rating</b>: <%= personalhygeine %></p>
 
         </div>
       </div>
@@ -76,11 +80,12 @@
         <div class="card-body">
           <!--Title-->
           <h4 class="card-title">Human Waste Disposal</h4>
+          <hr>
           <!--Text-->
           <p class="card-text">How is the management of liquid waste and excretal disposal in your society?</p>
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-          <p>Rated By : <%=datas[0].ratedby%></p>
-          <p>Rating: <%= healthfacility %></p>
+          <p><b>Rated By</b> : <%=datas[0].ratedby%></p>
+          <p><b>Rating</b>: <%= healthfacility %></p>
 
         </div>
       </div>
@@ -95,11 +100,12 @@
         <div class="card-body">
           <!--Title-->
           <h4 class="card-title">Institutional Hygiene</h4>
+          <hr>
           <!--Text-->
           <p class="card-text">How is the hygiene at the schools, prisons, refuge camps, homes, etc in your area.</p>
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-          <p>Rated By : <%=datas[0].ratedby%></p>
-          <p>Rating: <%= publicinfrastructure %></p>
+          <p><b>Rated By</b> : <%=datas[0].ratedby%></p>
+          <p><b>Rating</b>: <%= publicinfrastructure %></p>
 
         </div>
       </div>
